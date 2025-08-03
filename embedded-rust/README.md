@@ -1,0 +1,1 @@
+sudo apt install minicom libusb-1.0-0-dev libsdl2-dev libssl-dev
