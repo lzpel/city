@@ -1,7 +1,10 @@
+DEVICE_EXP:=CH340|C270
 create:
 	cargo install cargo-espflash --locked
 	cargo install espup --locked
 	espup install
+attach:
+	usbipd list | grep -E '$(DEVICE_EXP)' | perl -pe "s/^([\d-]+).*/\1/g" | xargs -IX sh -c "usbipd bind --busid X && usbipd attach --wsl --busid X"
 generate:
 	rustup override set esp
 test:
